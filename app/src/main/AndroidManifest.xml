@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.dualsoft.soccerchallange">
+
+    <application
+        android:name=".SugarApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="DATABASE"
+            android:value="soccer_challenge.db" />
+        <meta-data
+            android:name="VERSION"
+            android:value="2" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="false" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="br.com.dualsoft.soccerchallange" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MatchEditActivity" />
+        <activity
+            android:name=".RaffleActivity"
+            android:label="@string/title_activity_raffle"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MatchRaffledActivity"
+            android:label="@string/title_activity_match_raffled"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MatchListActivity"
+            android:label="@string/title_activity_match_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

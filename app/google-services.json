@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "1078479275056",
+    "firebase_url": "https://soccer-challenge.firebaseio.com",
+    "project_id": "soccer-challenge",
+    "storage_bucket": "soccer-challenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078479275056:android:8d96b3e4be39e02d",
+        "android_client_info": {
+          "package_name": "br.com.dualsoft.soccerchallange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078479275056-gifqmjte59m1m76v62ru7srfcaql0hh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuivxJR5sTcIAP-r9XtNP6wFBwU2l8StU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078479275056:android:15f86edf6fba29df",
+        "android_client_info": {
+          "package_name": "com.teste.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078479275056-gifqmjte59m1m76v62ru7srfcaql0hh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuivxJR5sTcIAP-r9XtNP6wFBwU2l8StU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

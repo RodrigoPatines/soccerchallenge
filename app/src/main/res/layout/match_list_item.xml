@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Date"
+        android:id="@+id/dateTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_alignParentLeft="true"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Status"
+        android:id="@+id/statusTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="X"
+        android:id="@+id/versusTextView"
+        android:layout_alignBottom="@+id/homeTeamTextView"
+        android:layout_centerHorizontal="true"
+        android:textColor="#2e2e2e" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Home Team"
+        android:id="@+id/homeTeamTextView"
+        android:layout_below="@+id/dateTextView"
+        android:layout_alignStart="@+id/dateTextView"
+        android:textColor="#2e2e2e"
+        android:textSize="15dp"
+        android:layout_toStartOf="@+id/homeScoreTextView"
+        android:layout_marginRight="5dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Away Team"
+        android:id="@+id/awayTeamTextView"
+        android:layout_below="@+id/statusTextView"
+        android:layout_alignEnd="@+id/statusTextView"
+        android:textColor="#2e2e2e"
+        android:textSize="15dp"
+        android:layout_toEndOf="@+id/awayScoreTextView"
+        android:layout_marginLeft="5dp"
+        android:textAlignment="textEnd"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Home Coach"
+        android:id="@+id/homeCoachTextView"
+        android:layout_below="@+id/homeTeamTextView"
+        android:layout_alignStart="@+id/homeTeamTextView"
+        android:layout_marginBottom="16dp"
+        android:textSize="10dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_alignEnd="@+id/homeScoreTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Away Coach"
+        android:id="@+id/awayCoachTextView"
+        android:layout_below="@+id/versusTextView"
+        android:layout_alignEnd="@+id/awayTeamTextView"
+        android:layout_marginBottom="16dp"
+        android:textSize="10dp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:layout_alignStart="@+id/awayScoreTextView"
+        android:textAlignment="textEnd" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="99 (99)"
+        android:id="@+id/homeScoreTextView"
+        android:textColor="#828282"
+        android:textSize="15dp"
+        android:layout_alignTop="@+id/homeTeamTextView"
+        android:layout_toStartOf="@+id/versusTextView"
+        android:layout_marginRight="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="(99) 99"
+        android:id="@+id/awayScoreTextView"
+        android:textColor="#828282"
+        android:textSize="15dp"
+        android:layout_alignTop="@+id/homeScoreTextView"
+        android:layout_toEndOf="@+id/versusTextView"
+        android:layout_marginLeft="5dp" />
+
+</RelativeLayout>
