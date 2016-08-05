@@ -1,8 +1,11 @@
 package br.com.dualsoft.soccerchallange.models;
 
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Rodrigo.Patines on 04/08/2016.
@@ -43,5 +46,16 @@ public class Association {
 
     public void setCountries(List<Country> countries) {
         this.countries = countries;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+
+        result.put("name", this.name);
+        result.put("initials", this.initials);
+        result.put("countries", this.countries);
+
+        return result;
     }
 }
