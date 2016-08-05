@@ -4,14 +4,11 @@ import android.content.res.Configuration;
 
 import com.orm.SugarApp;
 import com.orm.SugarContext;
-import com.orm.SugarRecord;
 
-import java.util.List;
-
-import br.com.dualsoft.soccerchallange.models.Association;
-import br.com.dualsoft.soccerchallange.models.Coach;
-import br.com.dualsoft.soccerchallange.models.Country;
-import br.com.dualsoft.soccerchallange.models.Team;
+import br.com.dualsoft.soccerchallange.entities.Association;
+import br.com.dualsoft.soccerchallange.entities.Coach;
+import br.com.dualsoft.soccerchallange.entities.Country;
+import br.com.dualsoft.soccerchallange.entities.Team;
 
 /**
  * Created by Rodrigo.Patines on 24/07/2016.

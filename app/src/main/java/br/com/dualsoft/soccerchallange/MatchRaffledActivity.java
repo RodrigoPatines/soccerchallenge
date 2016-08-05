@@ -11,7 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import br.com.dualsoft.soccerchallange.models.Match;
+import br.com.dualsoft.soccerchallange.entities.Match;
 
 public class MatchRaffledActivity extends AppCompatActivity {
     private Match match;

@@ -1,6 +1,5 @@
 package br.com.dualsoft.soccerchallange.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.dualsoft.soccerchallange.R;
-import br.com.dualsoft.soccerchallange.models.Match;
+import br.com.dualsoft.soccerchallange.entities.Match;
 
 /**
  * Created by Rodrigo.Patines on 01/08/2016.

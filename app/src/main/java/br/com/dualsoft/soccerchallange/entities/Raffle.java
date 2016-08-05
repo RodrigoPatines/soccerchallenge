@@ -1,4 +1,4 @@
-package br.com.dualsoft.soccerchallange.models;
+package br.com.dualsoft.soccerchallange.entities;
 
 import com.orm.SugarRecord;
 

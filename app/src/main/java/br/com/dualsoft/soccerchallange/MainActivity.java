@@ -3,7 +3,6 @@ package br.com.dualsoft.soccerchallange;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import br.com.dualsoft.soccerchallange.models.Association;
-import br.com.dualsoft.soccerchallange.models.Match;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +46,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void writeTeamUser() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+
+
+        br.com.dualsoft.soccerchallange.models.Association association = new br.com.dualsoft.soccerchallange.models.Association("Uniao das Federações Europeias", "UEFA", null);
+        br.com.dualsoft.soccerchallange.models.Country country = new br.com.dualsoft.soccerchallange.models.Country("Italia", "ITA", association);
+        br.com.dualsoft.soccerchallange.models.Team team = new br.com.dualsoft.soccerchallange.models.Team("Milan", "MIL", 5.0f, 0, country);
+
+        String key = myRef.child("teams").push().getKey();
+        myRef.child("teams").child(key).setValue(team);
     }
 
     @Override
@@ -94,6 +107,8 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_slideshow) {
+
+            this.writeTeamUser();
 
         } else if (id == R.id.nav_manage) {
 

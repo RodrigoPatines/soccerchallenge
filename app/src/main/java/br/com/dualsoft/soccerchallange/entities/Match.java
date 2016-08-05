@@ -1,7 +1,5 @@
-package br.com.dualsoft.soccerchallange.models;
+package br.com.dualsoft.soccerchallange.entities;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
 import java.io.Serializable;

@@ -1,12 +1,9 @@
 package br.com.dualsoft.soccerchallange;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -15,7 +12,7 @@ import com.orm.query.Select;
 import java.util.List;
 
 import br.com.dualsoft.soccerchallange.adapters.MatchListViewAdapter;
-import br.com.dualsoft.soccerchallange.models.Match;
+import br.com.dualsoft.soccerchallange.entities.Match;
 
 public class MatchListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private ListView listView;

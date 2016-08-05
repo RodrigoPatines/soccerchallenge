@@ -27,6 +27,7 @@ dependencies {
     compile 'com.android.support:design:23.4.0'
     compile 'com.github.satyan:sugar:1.5'
     compile 'com.google.code.gson:gson:2.7'
+    compile 'com.google.firebase:firebase-database:9.2.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
