@@ -52,14 +52,15 @@ public class MainActivity extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
-
-
         br.com.dualsoft.soccerchallange.models.Association association = new br.com.dualsoft.soccerchallange.models.Association("Uniao das Federações Europeias", "UEFA", null);
-        br.com.dualsoft.soccerchallange.models.Country country = new br.com.dualsoft.soccerchallange.models.Country("Italia", "ITA", association);
+        br.com.dualsoft.soccerchallange.models.Country country = new br.com.dualsoft.soccerchallange.models.Country("Italia", "ITA", association, null, null);
         br.com.dualsoft.soccerchallange.models.Team team = new br.com.dualsoft.soccerchallange.models.Team("Milan", "MIL", 5.0f, 0, country);
 
         String key = myRef.child("teams").push().getKey();
         myRef.child("teams").child(key).setValue(team);
+
+        br.com.dualsoft.soccerchallange.models.Raffle raffle = new br.com.dualsoft.soccerchallange.models.Raffle(0, 15l, 54l, 1l, 2l);
+        myRef.child("raffle").setValue(raffle);
     }
 
     @Override
