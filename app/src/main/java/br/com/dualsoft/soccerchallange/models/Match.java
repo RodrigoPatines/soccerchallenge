@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by Rodrigo.Patines on 05/08/2016.
  */
 @IgnoreExtraProperties
-public class Match {
+public class Match extends BaseModel {
     public Date date;
     public Team homeTeam;
     public Team awayTeam;
@@ -25,6 +25,7 @@ public class Match {
     public Match() { }
 
     public Match(Date date, Team homeTeam, Team awayTeam, Coach homeCoach, Coach awayCoach, Integer homeScore, Integer awayScore, Integer homePenaltyScore, Integer awayPenaltyScore) {
+        super();
         this.date = date;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;

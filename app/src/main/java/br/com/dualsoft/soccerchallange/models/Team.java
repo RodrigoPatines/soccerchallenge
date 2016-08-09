@@ -10,21 +10,22 @@ import java.util.Map;
  * Created by Rodrigo.Patines on 04/08/2016.
  */
 @IgnoreExtraProperties
-public class Team {
+public class Team extends BaseModel {
     public String name;
     public String abbreviation;
     public Float starRating;
     public Integer national;
-    public Country country;
+    public String countryId;
 
     public Team() { }
 
-    public Team(String name, String abbreviation, Float starRating, Integer national, Country country) {
+    public Team(String name, String abbreviation, Float starRating, Integer national, String countryId) {
+        super();
         this.name = name;
         this.abbreviation = abbreviation;
         this.starRating = starRating;
         this.national = national;
-        this.country = country;
+        this.countryId = countryId;
     }
 
     public String getName() {
@@ -59,12 +60,12 @@ public class Team {
         this.national = national;
     }
 
-    public Country getCountry() {
-        return country;
+    public String getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
     @Exclude
@@ -75,7 +76,7 @@ public class Team {
         result.put("abbreviation", this.abbreviation);
         result.put("starRating", this.starRating);
         result.put("national", this.national);
-        result.put("country", this.country);
+        result.put("countryId", this.countryId);
 
         return result;
     }

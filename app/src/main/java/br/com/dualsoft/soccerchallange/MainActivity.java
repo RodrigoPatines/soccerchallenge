@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import br.com.dualsoft.soccerchallange.models.LoadDB;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
+/*
         br.com.dualsoft.soccerchallange.models.Association association = new br.com.dualsoft.soccerchallange.models.Association("Uniao das Federações Europeias", "UEFA", null);
         br.com.dualsoft.soccerchallange.models.Country country = new br.com.dualsoft.soccerchallange.models.Country("Italia", "ITA", association, null, null);
         br.com.dualsoft.soccerchallange.models.Team team = new br.com.dualsoft.soccerchallange.models.Team("Milan", "MIL", 5.0f, 0, country);
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity
 
         br.com.dualsoft.soccerchallange.models.Raffle raffle = new br.com.dualsoft.soccerchallange.models.Raffle(0, 15l, 54l, 1l, 2l);
         myRef.child("raffle").setValue(raffle);
+*/
     }
 
     @Override
@@ -109,7 +113,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-            this.writeTeamUser();
+            LoadDB loadDB = new LoadDB();
+            loadDB.initialize();
 
         } else if (id == R.id.nav_manage) {
 

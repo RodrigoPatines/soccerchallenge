@@ -18,10 +18,22 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.orm.query.Select;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import br.com.dualsoft.soccerchallange.entities.Association;
 import br.com.dualsoft.soccerchallange.entities.Coach;
@@ -31,6 +43,7 @@ import br.com.dualsoft.soccerchallange.entities.Raffle;
 import br.com.dualsoft.soccerchallange.entities.Team;
 
 public class RaffleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+    private DatabaseReference database;
     private CoordinatorLayout coordinatorLayout;
     private Raffle raffle;
     private RadioButton clubTeam;
@@ -54,6 +67,22 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+
+        database = FirebaseDatabase.getInstance().getReference();
+        Query query = database.child("associations");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>> mapType = new GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>>() { };
+                Map<String, br.com.dualsoft.soccerchallange.models.Association> map = dataSnapshot.getValue(mapType);
+                List<br.com.dualsoft.soccerchallange.models.Association> a = new ArrayList< br.com.dualsoft.soccerchallange.models.Association>(map.values());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         raffle = Raffle.first(Raffle.class);
         if (raffle == null)

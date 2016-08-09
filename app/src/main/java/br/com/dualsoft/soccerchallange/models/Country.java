@@ -5,6 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 import org.w3c.dom.ls.LSException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,21 +14,24 @@ import java.util.Map;
  * Created by Rodrigo.Patines on 04/08/2016.
  */
 @IgnoreExtraProperties
-public class Country {
+public class Country extends BaseModel {
     public String name;
     public String abbreviation;
     public Association association;
-    public List<Team> teams;
-    public List<Coach> coaches;
+    public Map<String, Boolean> teams;
+    public Map<String, Coach> coaches;
 
     public Country() { }
 
-    public Country(String name, String abbreviation, Association association, List<Team> teams, List<Coach> coaches) {
+    public Country(String name, String abbreviation) {
+        this(name, abbreviation, null);
+    }
+
+    public Country(String name, String abbreviation, Association association) {
+        super();
         this.name = name;
         this.abbreviation = abbreviation;
         this.association = association;
-        this.teams = teams;
-        this.coaches = coaches;
     }
 
     public String getName() {
@@ -52,22 +56,6 @@ public class Country {
 
     public void setAssociation(Association association) {
         this.association = association;
-    }
-
-    public List<Team> getTeams() {
-        return teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        this.teams = teams;
-    }
-
-    public List<Coach> getCoaches() {
-        return coaches;
-    }
-
-    public void setCoaches(List<Coach> coaches) {
-        this.coaches = coaches;
     }
 
     @Exclude
