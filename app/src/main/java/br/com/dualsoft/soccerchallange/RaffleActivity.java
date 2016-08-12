@@ -75,7 +75,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
             public void onDataChange(DataSnapshot dataSnapshot) {
                 GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>> mapType = new GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>>() { };
                 Map<String, br.com.dualsoft.soccerchallange.models.Association> map = dataSnapshot.getValue(mapType);
-                List<br.com.dualsoft.soccerchallange.models.Association> a = new ArrayList< br.com.dualsoft.soccerchallange.models.Association>(map.values());
+                List<br.com.dualsoft.soccerchallange.models.Association> a = new ArrayList<br.com.dualsoft.soccerchallange.models.Association>(map.values());
             }
 
             @Override

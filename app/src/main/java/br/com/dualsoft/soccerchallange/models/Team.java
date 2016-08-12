@@ -15,17 +15,26 @@ public class Team extends BaseModel {
     public String abbreviation;
     public Float starRating;
     public Integer national;
-    public String countryId;
+    public String countryKey;
+    public Country country;
 
     public Team() { }
 
-    public Team(String name, String abbreviation, Float starRating, Integer national, String countryId) {
-        super();
+    public Team(String name, String abbreviation, Float starRating, Integer national) {
         this.name = name;
         this.abbreviation = abbreviation;
         this.starRating = starRating;
         this.national = national;
-        this.countryId = countryId;
+    }
+
+    public Team(String name, String abbreviation, Float starRating, Integer national, String countryKey) {
+        this(name, abbreviation, starRating, national);
+        this.countryKey = countryKey;
+    }
+
+    public Team(String name, String abbreviation, Float starRating, Integer national, Country country) {
+        this(name, abbreviation, starRating, national);
+        this.country = country;
     }
 
     public String getName() {
@@ -60,12 +69,12 @@ public class Team extends BaseModel {
         this.national = national;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountryKey() {
+        return countryKey;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountryKey(String countryKey) {
+        this.countryKey = countryKey;
     }
 
     @Exclude
@@ -76,7 +85,7 @@ public class Team extends BaseModel {
         result.put("abbreviation", this.abbreviation);
         result.put("starRating", this.starRating);
         result.put("national", this.national);
-        result.put("countryId", this.countryId);
+        result.put("countryKey", this.countryKey);
 
         return result;
     }

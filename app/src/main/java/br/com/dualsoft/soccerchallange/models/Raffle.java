@@ -72,7 +72,7 @@ public class Raffle {
         HashMap<String, Object> result = new HashMap<>();
 
         result.put("national", this.national);
-        result.put("countryId", this.countryId);
+        result.put("countryKey", this.countryId);
         result.put("associationId", this.associationId);
         result.put("homeCoachId", this.homeCoachId);
         result.put("awayCoachId", this.awayCoachId);

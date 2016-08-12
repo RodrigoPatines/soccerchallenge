@@ -229,6 +229,8 @@ public class LoadDB {
         String path = "associations/" + associationKey + "/countries";
         String key = database.child(path).push().getKey();
         database.child(path).child(key).setValue(country);
+        path = "countries/" + key;
+        database.child(path).setValue(country);
         return key;
     }
 
@@ -240,6 +242,10 @@ public class LoadDB {
         data.put(path + "/" + key, true);
         database.updateChildren(data);
         database.child("teams").child(key).setValue(team);
+        path = "countries/" + countryKey + "/teams";
+        data.clear();
+        data.put(path + "/" + key, true);
+        database.updateChildren(data);
         return key;
     }
 
@@ -251,6 +257,11 @@ public class LoadDB {
         data.put(path + "/" + key, true);
         database.updateChildren(data);
         database.child("coaches").child(key).setValue(coach);
+        path = "countries/" + countryKey + "/coaches";
+        data.clear();
+        data.put(path + "/" + key, true);
+        database.updateChildren(data);
+
         return key;
     }
 }

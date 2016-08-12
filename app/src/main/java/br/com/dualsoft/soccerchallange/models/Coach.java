@@ -13,15 +13,24 @@ import java.util.Map;
 public class Coach extends BaseModel {
     public String name;
     public String nickname;
-    public String countryId;
+    public String countryKey;
+    public Country country;
 
     public Coach() { }
 
-    public Coach(String name, String nickname, String countryId) {
-        super();
+    public Coach(String name, String nickname) {
         this.name = name;
         this.nickname = nickname;
-        this.countryId = countryId;
+    }
+
+    public Coach(String name, String nickname, String countryKey) {
+        this(name, nickname);
+        this.countryKey = countryKey;
+    }
+
+    public Coach(String name, String nickname, Country country) {
+        this(name, nickname);
+        this.country = country;
     }
 
     public String getName() {
@@ -40,12 +49,20 @@ public class Coach extends BaseModel {
         this.nickname = nickname;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountryKey() {
+        return countryKey;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountryKey(String countryKey) {
+        this.countryKey = countryKey;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     @Exclude
@@ -54,7 +71,8 @@ public class Coach extends BaseModel {
 
         result.put("name", this.name);
         result.put("nickname", this.nickname);
-        result.put("countryId", this.countryId);
+        result.put("countryKey", this.countryKey);
+        result.put("country", this.country);
 
         return result;
     }
