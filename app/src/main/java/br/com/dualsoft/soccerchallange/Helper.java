@@ -3,6 +3,8 @@ package br.com.dualsoft.soccerchallange;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.Date;
 import java.util.Random;
 

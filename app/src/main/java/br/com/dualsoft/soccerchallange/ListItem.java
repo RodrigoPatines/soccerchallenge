@@ -5,7 +5,13 @@ package br.com.dualsoft.soccerchallange;
  */
 public class ListItem {
     private Long id;
+    private String key;
     private String description;
+
+    public ListItem(String key, String description) {
+        this.key = key;
+        this.description = description;
+    }
 
     public ListItem(Long id, String description) {
         this.id = id;
@@ -18,6 +24,14 @@ public class ListItem {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getDescription() {

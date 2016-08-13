@@ -18,29 +18,27 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.orm.query.Select;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
+import br.com.dualsoft.soccerchallange.db.Data;
+import br.com.dualsoft.soccerchallange.models.Association;
+
+/*
 import br.com.dualsoft.soccerchallange.entities.Association;
 import br.com.dualsoft.soccerchallange.entities.Coach;
 import br.com.dualsoft.soccerchallange.entities.Country;
 import br.com.dualsoft.soccerchallange.entities.Match;
 import br.com.dualsoft.soccerchallange.entities.Raffle;
 import br.com.dualsoft.soccerchallange.entities.Team;
+*/
 
 public class RaffleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private DatabaseReference database;
@@ -56,6 +54,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
     private Spinner awayCoachSpinner;
     private ArrayAdapter<ListItem> coachAdapter;
     private Button invertCoachButton;
+    private AppCompatActivity self;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,27 +65,52 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        self = this;
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-
-        database = FirebaseDatabase.getInstance().getReference();
-        Query query = database.child("associations");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>> mapType = new GenericTypeIndicator<Map<String, br.com.dualsoft.soccerchallange.models.Association>>() { };
-                Map<String, br.com.dualsoft.soccerchallange.models.Association> map = dataSnapshot.getValue(mapType);
-                List<br.com.dualsoft.soccerchallange.models.Association> a = new ArrayList<br.com.dualsoft.soccerchallange.models.Association>(map.values());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         raffle = Raffle.first(Raffle.class);
         if (raffle == null)
             raffle = new Raffle(0, 0l, 0l, 0l, 0l);
+
+        Data.getDb().child("raffle")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+        Data.getDb()
+                .child("associations")
+                .orderByChild("initials")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Create associationSpinner
+                        associationAdapter = new ArrayAdapter<>(self, android.R.layout.simple_spinner_item);
+                        associationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        associationAdapter.add(new ListItem(0l, "Todas"));
+                        List<Association> associations = Data.getAssociations(dataSnapshot);
+                        for (Association association : associations) {
+                            associationAdapter.add(new ListItem(association.getKey(), association.getInitials()));
+                        }
+                        associationSpinner = (Spinner)findViewById(R.id.associationSpinner);
+                        associationSpinner.setOnItemSelectedListener((AdapterView.OnItemSelectedListener)self);
+                        associationSpinner.setAdapter(associationAdapter);
+                        //Helper.selectSpinnerItemById(associationSpinner, raffle.getAssociationId());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
 
         //Create clubTeam/nationalTeam
         clubTeam = (RadioButton)findViewById(R.id.clubTeam);
@@ -112,7 +136,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
         countrySpinner.setAdapter(countryAdapter);
         Helper.selectSpinnerItemById(countrySpinner, raffle.getCountryId());
 
-        //Create associationSpinner
+/*        //Create associationSpinner
         associationAdapter = new ArrayAdapter<ListItem>(this, android.R.layout.simple_spinner_item);
         associationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         associationAdapter.add(new ListItem(0l, "Todas"));
@@ -123,7 +147,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
         associationSpinner = (Spinner)findViewById(R.id.associationSpinner);
         associationSpinner.setOnItemSelectedListener(this);
         associationSpinner.setAdapter(associationAdapter);
-        Helper.selectSpinnerItemById(associationSpinner, raffle.getAssociationId());
+        Helper.selectSpinnerItemById(associationSpinner, raffle.getAssociationId());*/
 
         //Create homeCoachSpinner/awayCoachSpinner
         coachAdapter = new ArrayAdapter<ListItem>(this, android.R.layout.simple_spinner_item);
@@ -169,7 +193,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
+/*        switch (view.getId()) {
             case R.id.clubTeam:
                 raffle.setNational(0);
                 break;
@@ -178,12 +202,12 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
                 break;
             case R.id.invertCoachButton:
                 this.invertCoach();
-        }
+        }*/
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        ListItem listItem = (ListItem)parent.getItemAtPosition(position);
+/*        ListItem listItem = (ListItem)parent.getItemAtPosition(position);
         switch (parent.getId()) {
             case R.id.countrySpinner:
                 raffle.setCountryId(listItem.getId());
@@ -197,7 +221,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
             case R.id.awayCoachSpinner:
                 raffle.setAwayCoachId(listItem.getId());
                 break;
-        }
+        }*/
     }
 
     @Override
@@ -212,7 +236,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void raffleDone() {
-        Match match = new Match();
+/*        Match match = new Match();
         List<Team> teams = new ArrayList();
 
         if (raffle.getAssociationId() == 0 && raffle.getCountryId() == 0) {
@@ -300,7 +324,7 @@ public class RaffleActivity extends AppCompatActivity implements AdapterView.OnI
         } else {
             Snackbar.make(coordinatorLayout, "Configuração sem times para sorteio!", Snackbar.LENGTH_LONG).show();
             return;
-        }
+        }*/
     }
 
     private void invertCoach() {
