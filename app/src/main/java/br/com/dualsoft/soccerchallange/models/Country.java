@@ -19,7 +19,7 @@ public class Country extends BaseModel {
     public String abbreviation;
     public Association association;
     public Map<String, Boolean> teams;
-    public Map<String, Coach> coaches;
+    public Map<String, Boolean> coaches;
 
     public Country() { }
 

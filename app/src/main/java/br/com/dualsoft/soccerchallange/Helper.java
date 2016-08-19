@@ -14,11 +14,11 @@ import java.util.Random;
 public class Helper {
     public static final int ACTIVITY_REQUEST_CODE = 1;
 
-    public static void selectSpinnerItemById(Spinner spinner, long id) {
+    public static void selectSpinnerItemById(Spinner spinner, String key) {
         ArrayAdapter adapter = (ArrayAdapter) spinner.getAdapter();
         for (int position = 0; position < adapter.getCount(); position++) {
             ListItem listItem =  (ListItem) adapter.getItem(position);
-            if(listItem.getId() == id) {
+            if(listItem.getKey() == key) {
                 spinner.setSelection(position);
                 return;
             }

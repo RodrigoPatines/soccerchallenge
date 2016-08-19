@@ -218,48 +218,40 @@ public class LoadDB {
 
     public String writeAssociation(String name, String initials) {
         Association association = new Association(name, initials);
-        String path = "associations";
-        String key = database.child(path).push().getKey();
-        database.child(path).child(key).setValue(association);
+        String key = database.child("associations").push().getKey();
+        database.child("associations/" + key).setValue(association);
         return key;
     }
 
     public String writeCountry(String name, String abbreviation, String associationKey) {
         Country country = new Country(name, abbreviation);
-        String path = "associations/" + associationKey + "/countries";
-        String key = database.child(path).push().getKey();
-        database.child(path).child(key).setValue(country);
-        path = "countries/" + key;
-        database.child(path).setValue(country);
+        String key = database.child("countries").push().getKey();
+        database.child("countries/" + key).setValue(country);
+        database.child("associations/" + associationKey + "/countries/" + key).setValue(country);
         return key;
     }
 
     public String writeTeam(String name, String abbreviation, Float starRating, Integer national, String countryKey, String associationKey) {
         Team team = new Team(name, abbreviation, starRating, national, countryKey);
-        String path = "associations/" + associationKey + "/countries/" + countryKey + "/teams";
-        String key = database.child(path).push().getKey();
+        String key = database.child("teams").push().getKey();
+        database.child("teams/" + key).setValue(team);
+
         Map<String, Object> data = new HashMap<>();
-        data.put(path + "/" + key, true);
+        data.put("countries/" + countryKey + "/teams/" + key, true);
+        data.put("associations/" + associationKey + "/countries/" + countryKey + "/teams/" + key, true);
         database.updateChildren(data);
-        database.child("teams").child(key).setValue(team);
-        path = "countries/" + countryKey + "/teams";
-        data.clear();
-        data.put(path + "/" + key, true);
-        database.updateChildren(data);
+
         return key;
     }
 
     public String writeCoach(String name, String nickname, String countryKey, String associationKey) {
         Coach coach = new Coach(name, nickname, countryKey);
-        String path = "associations/" + associationKey + "/countries/" + countryKey + "/coaches";
-        String key = database.child(path).push().getKey();
+        String key = database.child("coaches").push().getKey();
+        database.child("coaches/" + key).setValue(coach);
+
         Map<String, Object> data = new HashMap<>();
-        data.put(path + "/" + key, true);
-        database.updateChildren(data);
-        database.child("coaches").child(key).setValue(coach);
-        path = "countries/" + countryKey + "/coaches";
-        data.clear();
-        data.put(path + "/" + key, true);
+        data.put("countries/" + countryKey + "/coaches/" + key, true);
+        data.put("associations/" + associationKey + "/countries/" + countryKey + "/coaches/" + key, true);
         database.updateChildren(data);
 
         return key;

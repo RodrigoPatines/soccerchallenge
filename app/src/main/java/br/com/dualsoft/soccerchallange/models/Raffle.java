@@ -12,19 +12,25 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class Raffle {
     public Integer national;
-    public Long countryId;
-    public Long associationId;
-    public Long homeCoachId;
-    public Long awayCoachId;
+    public Country country;
+    public Association association;
+    public Coach homeCoach;
+    public Coach awayCoach;
 
-    public Raffle() { }
+    public Raffle() {
+        this.national = 0;
+        this.country = new Country();
+        this.association = new Association();
+        this.homeCoach = new Coach();
+        this.awayCoach = new Coach();
+    }
 
-    public Raffle(Integer national, Long countryId, Long associationId, Long homeCoachId, Long awayCoachId) {
+    public Raffle(Integer national, Country country, Association association, Coach homeCoach, Coach awayCoach) {
         this.national = national;
-        this.countryId = countryId;
-        this.associationId = associationId;
-        this.homeCoachId = homeCoachId;
-        this.awayCoachId = awayCoachId;
+        this.country = country;
+        this.association = association;
+        this.homeCoach = homeCoach;
+        this.awayCoach = awayCoach;
     }
 
     public Integer getNational() {
@@ -35,36 +41,36 @@ public class Raffle {
         this.national = national;
     }
 
-    public Long getCountryId() {
-        return countryId;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryId(Long countryId) {
-        this.countryId = countryId;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
-    public Long getAssociationId() {
-        return associationId;
+    public Association getAssociation() {
+        return association;
     }
 
-    public void setAssociationId(Long associationId) {
-        this.associationId = associationId;
+    public void setAssociation(Association association) {
+        this.association = association;
     }
 
-    public Long getHomeCoachId() {
-        return homeCoachId;
+    public Coach getHomeCoach() {
+        return homeCoach;
     }
 
-    public void setHomeCoachId(Long homeCoachId) {
-        this.homeCoachId = homeCoachId;
+    public void setHomeCoach(Coach homeCoach) {
+        this.homeCoach = homeCoach;
     }
 
-    public Long getAwayCoachId() {
-        return awayCoachId;
+    public Coach getAwayCoach() {
+        return awayCoach;
     }
 
-    public void setAwayCoachId(Long awayCoachId) {
-        this.awayCoachId = awayCoachId;
+    public void setAwayCoach(Coach awayCoach) {
+        this.awayCoach = awayCoach;
     }
 
     @Exclude
@@ -72,10 +78,10 @@ public class Raffle {
         HashMap<String, Object> result = new HashMap<>();
 
         result.put("national", this.national);
-        result.put("countryKey", this.countryId);
-        result.put("associationId", this.associationId);
-        result.put("homeCoachId", this.homeCoachId);
-        result.put("awayCoachId", this.awayCoachId);
+        result.put("country", this.country);
+        result.put("association", this.association);
+        result.put("homeCoach", this.homeCoach);
+        result.put("awayCoach", this.awayCoach);
 
         return result;
     }

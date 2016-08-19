@@ -77,7 +77,7 @@ public class Team extends BaseModel {
         this.countryKey = countryKey;
     }
 
-    @Exclude
+/*    @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
 
@@ -88,5 +88,5 @@ public class Team extends BaseModel {
         result.put("countryKey", this.countryKey);
 
         return result;
-    }
+    }*/
 }

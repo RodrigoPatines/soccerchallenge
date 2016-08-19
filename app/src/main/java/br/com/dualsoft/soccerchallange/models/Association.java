@@ -51,4 +51,9 @@ public class Association extends BaseModel {
 
         return result;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
